@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note taking app</title>
+    <link rel="stylesheet" href="css/layoutStyle.css">
+    <link rel="stylesheet" href="css/layoutComponentStyles.css">
+    <link rel="stylesheet" href="css/noteComponentStyles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav id="top" class="nav">
+            <img style="cursor: pointer;" src="./assets/logo.svg" alt="logo" width="180px" onclick="()=>{}">
+            <div class="navigation">
+                <div class="secondarybtn">Home</div>
+                <div class="secondarybtn">About</div>
+            </div>
+            <div class="primarybtn btn-black">+ Add Note</div>
+        </nav>
+    </header>
+    <main>
+        <div id="mid">
+            <div id="mid-top">
+                <div id="mid-top-text">My Notes</div>
+                <div class="primarybtn btn-blue">+ Add New note</div>
+                
+            </div>
+            <div id="mid-bottom">
+                <ul>
+                    <li>
+                        <div id="note">
+                            <input id="checkbox" type="checkbox">
+                            <div id="note-content">
+                                <div id="note-header">Weekly Grocery list</div>
+                                <div id="note-footer">Milk, Egg, Butter, bread jam</div>
+                            </div>
+                            <div id="note-edit">
+                                <div id="pencil-parent" class="mini-btn"><img src="./assets/pencil.svg" class="mini-btn-child" alt="delete"></div>
+                                <div id="dustbin-parent" class="mini-btn"><img src="./assets/dustbin.svg" class="mini-btn-child" alt="delete"></div>
+                            </div>
+                        </div>
+                        <div id="note-parent-footer">
+                            <div id="time-parent">Last updated at: 09/11/03</div>
+                            <div id="status-parent">completed</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <nav id="bottom" class="nav">
+            <div class="navigation">
+                <div class="secondarybtn">Resources</div>
+                <div class="secondarybtn">Legal</div>
+            </div>
+        </nav>
+    </footer>
+</body>
+</html>
