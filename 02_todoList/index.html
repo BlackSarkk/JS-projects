@@ -10,17 +10,12 @@
     <link rel="stylesheet" href="css/noteComponentStyles.css">
     <link rel="stylesheet" href="css/noteDialogBox.css">
     <script src="js/index.js" type="module" defer></script>
-    <!-- <script src="js/utils.js" defer></script> -->
 </head>
 
 <body>
-    <header>
+    <header style="height: 8vh;">
         <nav id="top" class="nav">
             <img style="cursor: pointer;" src="./assets/logo.svg" alt="logo" width="180px" onclick="()=>{}">
-            <div class="navigation">
-                <div class="secondarybtn">Home</div>
-                <div class="secondarybtn">About</div>
-            </div>
             <div id="addNote1" class="primarybtn btn-black">+ Add Note</div>
         </nav>
     </header>
@@ -74,15 +69,15 @@
             </div>
             <div id="dialog-mid">
                 <div id="dialog-mid-title">Note title</div>
-                <input type="text" placeholder="My important idea">
+                <input id="dialog-mid-input" type="text" placeholder="My important idea">  
             </div>
             <div id="dialog-footer">
                 <div id="dialog-footer-title">Note Content</div>
-                <textarea placeholder="Start Writing your note here" id="dialog-footer-desc"></textarea>
+                <textarea id="dialog-footer-input" placeholder="Start Writing your note here" id="dialog-footer-desc"></textarea>  
             </div>
             <div id="dialog-bottom">
-                <div class="primarybtn btn-black">Cancel</div>
-                <div class="primarybtn btn-blue">Save Note</div>
+                <div id="cancel" class="primarybtn btn-black">Cancel</div>
+                <div id="saveNote" class="primarybtn btn-blue">Save Note</div>
             </div>
         </div>
     </div>

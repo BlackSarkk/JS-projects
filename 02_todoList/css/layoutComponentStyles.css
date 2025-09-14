@@ -90,7 +90,7 @@
   font-weight: 900;
 }
 
-#mid-bottom > ul {
+#mid-bottom ul {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;

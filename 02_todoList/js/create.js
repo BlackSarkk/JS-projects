@@ -1,12 +1,14 @@
 
+import { getNotes, saveNotes } from "./utils.js";
+
 const ul = document.querySelector('ul')
 
-
-const createNote = (Header, Footer, Date, status) => {
+const createNote = (Header, Footer, Date, status, onEdit, id = Date.now()) => {
 
     // Creating Elements
 
     let li = document.createElement("li")
+    li.dataset.id = id
 
     let note = document.createElement("div")
     note.id = "note"
@@ -67,7 +69,7 @@ const createNote = (Header, Footer, Date, status) => {
 
 
 
-    // APPENDING
+    // Build structure
 
     noteHeader.appendChild(document.createTextNode(Header))
     noteFooter.appendChild(document.createTextNode(Footer))
@@ -87,14 +89,64 @@ const createNote = (Header, Footer, Date, status) => {
 
     ul.prepend(li)
 
+
+
+
+    // Checkbox Initialize
+
+    checkbox.checked = status === "completed";
+    if (checkbox.checked) {
+        noteHeader.style.textDecoration = "line-through";
+        noteFooter.style.textDecoration = "line-through";
+    }
     
-    // DELETE current LI
-
-    dustbinParent.addEventListener('click', (e)=>{ li.remove() })
-
+    // Set status color based on status
+    statusParent.style.color = status === "completed" ? "lightgreen" : "red";
 
 
-    
+
+    // Checkbox change listner
+
+    checkbox.addEventListener("change", () => {
+        const done = checkbox.checked;
+        statusParent.textContent = done ? "completed" : "pending";
+        statusParent.style.color = done ? "lightgreen" : "red";
+        noteHeader.style.textDecoration = done ? "line-through" : "none";
+        noteFooter.style.textDecoration = done ? "line-through" : "none";
+
+
+        const notes = getNotes();
+        const note = notes.find(n => n.id === parseInt(li.dataset.id));
+        if (note) {
+            note.status = done ? "completed" : "pending";
+            saveNotes(notes);
+        }
+
+    });
+
+
+
+    // Delete
+
+
+    dustbinParent.addEventListener("click", () => {
+        li.remove();
+        let notes = getNotes();
+        notes = notes.filter(n => n.id !== parseInt(li.dataset.id));
+        saveNotes(notes);
+    });
+
+
+    // Edit
+
+    pencilParent.addEventListener("click", () => {
+        if (typeof onEdit === "function") {
+            onEdit(noteHeader, noteFooter, timeParent);
+        }
+
+    });
+
+
 
 
 
